@@ -1,0 +1,524 @@
+:root {
+  --text: #6b6375;
+  --text-h: #000000;
+  --bg: #fff;
+  --border: #e66464;
+  --code-bg: #f4f3ec;
+  --accent: #ff0202;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #000000;
+    --border: #640f0f;
+    --code-bg: #1f2028;
+    --accent: #e2643e;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1126px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+
+.foto {
+  position: relative; /*para que as imagens dentro da foto possam ser posicionadas absolutamente em relação a ela*/
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 20px; 
+  border-radius: 50%;
+  border: 4px dashed #900303;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+  overflow: hidden; /*esconde as partes das imagens que ultrapassarem os limites da foto*/
+  perspective: 1000px; /*efeito 3D*/
+}
+
+/* as duas imagens ocupam exatamente o mesmo espaço */
+.foto img {
+  position: absolute;
+  inset: 0; /*top: 0; right: 0; bottom: 0; left: 0;*/
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /*garante que a imagem preencha o espaço sem distorcão*/
+  border-radius: 50%;
+
+  transition: transform 0.8s ease, opacity 0.8s ease; /*transição suave para as transformações e mudanças de opacidade*/
+  backface-visibility: hidden; /*esconde a parte de trás da imagem quando ela estiver virada para longe do usuário*/
+}
+
+.minha-foto {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.foto-avatar {
+  opacity: 0;
+  transform: rotateY(180deg);
+}
+
+.foto:hover .minha-foto {
+  opacity: 0;
+  transform: rotateY(-180deg);
+}
+
+.foto:hover .foto-avatar {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.nome {
+  font-size: 72px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 400;
+  line-height: 1.1; /*a altura da linha será 1,1 vezes o tamanho da fonte*/
+  background: linear-gradient(90deg, #560808 20%, #f15f5f 55%, #ad0606 100%);
+
+  -webkit-background-clip: text;/*faz o mesmo que o comando abaixo, porém para certos navegadores*/
+  background-clip: text; /*corta o fundo no formato do texto*/
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+.descricao {
+  color: var(--text);
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  line-height: 1.6; /*a altura da linha será 1,6 vezes o tamanho da fonte*/
+  margin: 0 auto 20px; /*centraliza o parágrafo e adiciona uma margem inferior de 20px*/
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /*espaço entre os botões*/
+  
+}
+
+.botoes a {
+  min-width: 180px;
+  padding: 16px 24px; /*espaçamento interno dos botões (16px vertical, 24px horizontal)*/
+  border-radius: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 18px;
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+.botoes a:first-child { 
+  background-color: red;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid red;
+  color: red;
+}
+
+.botoes a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 30px rgba(255, 0, 0, 0.35);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.header {
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-conteudo {
+  display: flex;
+  justify-content: space-between; /*alinha os itens do header (logo e menu) nas extremidades*/
+  align-items: center; /*alinha os itens do header verticalmente ao centro*/
+  padding: 10px 20px;  
+}
+
+.menu {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.menu a {
+  text-decoration: none; /*remove o sublinhado*/
+  color: var(--text);
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+.menu.aberto {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-menu {
+  display: none; /*esconde o botão do menu em telas maiores*/
+}
+
+.sobre {
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.titulo-sobre {
+  text-align: center;
+  font-size: 42px; 
+  margin-bottom: 50px
+}
+
+.titulo-sobre span{
+  color: red;
+}
+
+.cards {
+  margin-top: 20px;
+  display: grid; /*cria um layout de grade para os cards*/
+  grid-template-columns: 1fr 1fr; /*define que a grade terá duas colunas de largura igual (1fr cada)*/
+  gap: 20px; /*espaço entre os cards*/
+}
+
+.card{
+  padding: 40px;
+  background: linear-gradient(rgb(31, 30, 30), rgb(6, 6, 6), rgb(1, 1, 1));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(58, 54, 54, 0.3);
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 2px 5px 30px rgba(230, 4, 4, 0.35);
+  border: 1px solid red;
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: var(--text-h);
+}
+
+.card p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text);
+}
+.card03 {
+  grid-column: span 2; /*faz com que o card03 ocupe as duas colunas da grade*/
+}
+
+.projetos {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.titulo-projetos {
+  text-align: center;
+  font-size: 42px; 
+  margin-bottom: 50px
+}
+
+.titulo-projetos span{
+  color: red;
+}
+
+.projetos-cards {
+  margin-top: 20px;
+  display: grid; /*cria um layout de grade para os cards*/
+  grid-template-columns: 1fr 1fr; /*define que a grade terá duas colunas de largura igual (1fr cada)*/
+  gap: 20px; /*espaço entre os cards*/
+}
+
+.projeto{
+  padding: 40px;
+  background: linear-gradient(rgb(31, 30, 30), rgb(6, 6, 6), rgb(1, 1, 1));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(58, 54, 54, 0.3);
+  transition: 0.3s;
+}
+
+.projeto:hover {
+  box-shadow: 2px 5px 30px rgba(230, 4, 4, 0.35);
+  border: 1px solid red;
+  transform: translateY(-5px);
+  
+}
+
+.projeto h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: var(--text-h);
+}
+
+.projeto:hover h3 {
+  color: red;
+  transition: 0.3s;
+}
+
+.projeto p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text);
+  min-height: 120px;
+}
+
+.tecnologias {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-wrap: wrap; /*permite que as tecnologias sejam quebradas em várias linhas, se necessário*/
+  gap: 40px; /*espaço entre as tecnologias*/
+}
+
+.tecnologias span {
+  padding: 8px 16px;
+  border-radius: 999px;
+  color: red;
+  border: 1px solid red;
+  background-color: #560808;
+}
+
+.link-projeto {
+  display: inline-block; /*faz o link deixar de agir como texto comum e virar uma pequena "caixa" sem ocupar a linha inteira(display:block)*/
+  margin-top: 24px;
+  font-weight: 800; /*Expessura do texto*/
+  text-decoration: none; /*remove o sublinhado do link*/
+  color: white;  
+  transition: 0.3s;
+
+}
+
+.link-projeto:hover {
+  color: red;
+  transform: scale(1.1);
+}
+
+
+.contato {
+  background-color: rgb(215, 6, 6);
+  padding: 120px 0;
+  
+}
+
+.titulo-contato {
+  color: black;
+  text-align: center;
+  font-size: 42px; 
+  margin-bottom: 50px
+}
+
+.titulo-contato span{
+  color: white;
+}
+
+.contato p {
+  margin: 0 auto 40px;
+  max-width: 700px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+  color: black
+}
+
+.redes-sociais {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  
+}
+
+.redes-sociais a {
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  display: flex; 
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  transition: 0.3s;
+}
+
+.redes-sociais a:hover {
+  background-color: white;
+  color: black;
+  transform: rotate(5deg) scale(1.1);
+}
+
+.redes-sociais a:nth-child(2):hover {
+  transform: rotate(-5deg);
+} /*Seleciona apenas o segundo link e aplica outra rotação*/
+
+.rodape-contato {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+
+
+
+
+
+@media (max-width: 1024px) {
+  .header {
+    position: relative;
+  } 
+
+  .btn-menu {
+    display: block; /*mostra o botão do menu em telas menores*/
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
+
+  .menu {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+
+  flex-direction: column;
+
+  transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.3s;
+}
+
+  .menu.aberto {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nome {
+  font-size: 48px;
+  }
+
+  .descricao {
+  font-size: 20px;
+  max-width: 90%;
+  
+}
+}
+
+
+  
+
