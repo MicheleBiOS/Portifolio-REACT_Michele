@@ -1,16 +1,29 @@
-# React + Vite
+# Michele Bianca - Portfólio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfólio pessoal desenvolvido para apresentar minha trajetória, habilidades e projetos na área de TI.
 
-Currently, two official plugins are available:
+## Sobre
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Sou estudante de TI pela UNIVESP e formada em Matemática. Atualmente estudo desenvolvimento de software, com interesse em áreas como desenvolvimento full stack, dados e inteligência artificial.
 
-## React Compiler
+## Tecnologias utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- HTML
+- CSS
+- JavaScript
+- React
+- Vite
 
-## Expanding the ESLint configuration
+## Projetos
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Front-end com IA
+Interface desenvolvida durante a Imersão Front-end com IA da Alura, com foco em responsividade, organização visual e experiência do usuário.
+
+### Portfólio pessoal
+Desenvolvimento de um portfólio responsivo para apresentar minha trajetória, habilidades e projetos.
+
+## Como executar o projeto
+
+```bash
+npm install
+npm run dev
